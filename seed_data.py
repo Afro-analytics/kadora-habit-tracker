@@ -10,7 +10,7 @@ exist in the database.
 
 from datetime import date, datetime, timedelta
 
-from app.database import SessionLocal
+from app.database import SessionLocal, init_db
 from app.models.habit import Habit
 from app.models.completion import Completion
  
@@ -22,6 +22,7 @@ def seed_database():
     patterns. Commit changes on success, roll back on failure,
     and always close the database session.
     """
+    init_db()
     db = SessionLocal()
 
     try:

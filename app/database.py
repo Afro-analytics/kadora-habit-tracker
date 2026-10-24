@@ -47,4 +47,13 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def init_db():
+    """
+    Create database tables for all registered models.
+    """
+    from app.models.habit import Habit
+    from app.models.completion import Completion
+
+    Base.metadata.create_all(bind=engine)
         
